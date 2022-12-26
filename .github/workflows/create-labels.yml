@@ -43,4 +43,4 @@ jobs:
         with:
           delete-other-labels: true
           config-file: 'https://raw.githubusercontent.com/wr-projects/github-template/main/.github/config/workflows/create-labels.yml'
-          token: ${{ steps.get_token.outputs.token }}
+          #token: ${{ steps.get_token.outputs.token }}
