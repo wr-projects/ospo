@@ -3,28 +3,20 @@ name: Pipeline - Wiki
 on:
   push:
     paths:
-      - '.github/wiki/**'
+      - 'wiki/**'
       - '.github/workflows/wiki.yml'
     branches:
-      - main
+      - wiki
 
   pull_request:
     paths:
-      - 'docs/**'
+      - 'wiki/**'
       - '.github/workflows/wiki.yml'
     branches:
-      - main
+      - wiki
 
 
 jobs:
-  lint-docs:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [16.10.0]
-
   wiki:
     runs-on: ubuntu-latest
 
@@ -41,13 +33,22 @@ jobs:
         id: get_token
         uses: peter-murray/workflow-application-token-action@8e1ba3bf1619726336414f1014e37f17fbadf1db
         with:
-          application_id: ${{ secrets.ID_CHECKDEPSBOT }}
-          application_private_key: ${{ secrets.PEM_CHECKDEPSBOT }}
+          application_id: ${{ secrets.ID_WIKIBOT }}
+          application_private_key: ${{ secrets.PEM_WIKIBOT }}
 
       # More info: https://github.com/actions/checkout.
       - name: Checkout & Authentication
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
         with:
+          token: ${{ steps.get_token.outputs.token }}
           persist-credentials: false
           fetch-depth: 0
+
+      # More info: https://github.com/Andrew-Chen-Wang/github-wiki-action
+      - name: Push Wiki
+        uses: Andrew-Chen-Wang/github-wiki-action@194d37ff03f5220e1baf7eb9d7c7ad7f3e1db30c
+        env:
+          WIKI_DIR: wiki/
+          GH_MAIL: ${{ secrets.WIKI_CI_EMAIL }}
+          GH_NAME: ${{ secrets.WIKI_CI_NAME }}
 
