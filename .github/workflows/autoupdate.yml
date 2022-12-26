@@ -39,5 +39,5 @@ jobs:
 
       - name: Autoupdate
         uses: tibdex/auto-update@4081c5bdc34560b58288a010318054e63e6f4a51
-        with:
-          github_token: ${{ steps.get_token.outputs.token }}
+        #with:
+          #github_token: ${{ steps.get_token.outputs.token }}
