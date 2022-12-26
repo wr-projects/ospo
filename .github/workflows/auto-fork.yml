@@ -1,0 +1,104 @@
+---
+name: Pipeline - Auto Fork
+
+on:
+  pull_request:
+    types: [ opened, labeled, synchronize, reopened ]
+    paths:
+      - 'requests/fork/*.yml'
+      - 'requests/fork/*.yaml'
+
+env:
+  ROOT_DIR: "./request/fork"
+  SCRIPTS_DIR: ".github/workflows/scripts/fork"
+  GITHUB_ACTOR: ${{ github.actor }}
+  GITHUB_PR: ${{ github.evnt.number }}
+  GITHUB_ORG: "wr-projects"
+  LICENSE_STRING: ""
+
+jobs:
+  auto-fork:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.label.name == 'type:🔁need-fork' }}
+    steps:
+      # More info: https://github.com/peter-murray/workflow-application-token-action.
+      - name: Get token
+        id: get_token
+        uses: peter-murray/workflow-application-token-action@8e1ba3bf1619726336414f1014e37f17fbadf1db
+        with:
+          application_id: ${{ secrets.ID_AUTOFORKBOT }}
+          application_private_key: ${{ secrets.PEM_AUTOFORKBOT }}
+
+      # More info: https://github.com/actions/checkout.
+      - name: Checkout & Authentication
+        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8
+        with:
+          repository: wr-projects/github-template
+          ref: ${{ github.event.pull_request.head.ref }}
+          token: ${{ steps.get_token.outputs.token }}
+          persist-credentials: false
+
+      # More info:
+      - name: Lint yaml
+        uses: ibiqlik/action-yamllint@2576378a8e339169678f9939646ee3ee325e845c
+        with:
+          file_or_dir: 'requests/fork/**'
+          config_file: '.github/config/linters/.yamllint.yml'
+
+      - name: Parse request
+        run: ${SCRIPTS_DIR}/parse.sh
+        shell: bash
+
+      - name: Handle error
+        if: ${{ failure() }}
+        uses: actions/github-script@d556feaca394842dc55e4734bf3bb9f685482fa0
+        with:
+          github-token: ${{ steps.get_token.outputs.token }}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo
+              body: "🚨 Hey @${{ env.GITHUB_ACTOR }}, looks like there was an issue processing your fork request! \
+              Please ensure you've committed a properly-formatted YAML (`.yml`) file to the `requests/fork/` directory."
+            })
+
+      - name: Approve PR
+        if: ${{ success() }}
+        uses: hmarr/auto-approve-action@de8ae18c173c131e182d4adf2c874d8d2308a85b
+        with:
+          github-token: ${{ steps.get_token.outputs.token }}
+
+      - name: Create fork
+        uses: wayfair-incubator/forker@f23a86b997e710e6c0600919e1f4f8f30ff0c587
+        with:
+          token: ${{ steps.get_token.outputs.token }}
+          repo: ${{ env.REPO_NAME }}
+          owner: ${{ env.REPO_OWNER }}
+          org: ${{ env.GITHUB_ORG }}
+          user: ${{ env.GITHUB_USER }}
+          checkUser: true
+          promoteUser: ${{ env.PROMOTE_USER }}
+          licenseAllowlist: ${{ env.LICENSE_STRING }}
+        id: fork
+
+      - name: Add comment
+        if: ${{ success() }}
+        uses: actions/github-script@d556feaca394842dc55e4734bf3bb9f685482fa0
+        with:
+          github-token: ${{ steps.get_token.outputs.token }}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: "🎉 All set @${{ env.GITHUB_ACTOR }}! \
+              Here's your fork: ${{ steps.fork.outputs.forkUrl }}"
+            })
+
+      - name: Process request
+        if: ${{ success() }}
+        run: |
+          ${SCRIPTS_DIR}/move.sh
+          ${SCRIPTS_DIR}/push.sh
+        shell: bash

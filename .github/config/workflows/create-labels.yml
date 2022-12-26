@@ -143,6 +143,10 @@
   color: 'DDCECD'
   description: Change/Enhancements to the project infrastructure
 
+- name: "type:🔁need-fork"
+  color: 'DDCECD'
+  description: Request a fork
+
 - name: "source: 🎉 ext-dependency"
   color: 'DD99BB'
   description: Third-party dependency problem can't fix by our own
