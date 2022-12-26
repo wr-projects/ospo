@@ -1,0 +1,55 @@
+---
+name: Pipeline -
+on:
+  issues:
+    types:
+      - opened
+      - labeled
+      - reopened
+      - closed
+
+env:
+  organization: wr-projects
+  project_id: 14
+  todo: 🆕 New
+
+jobs:
+
+  issue_labeled_team:
+    name: issue_opened_or_reopened
+    runs-on: ubuntu-latest
+    if: ${{ github.event.label.name == 'group:👨‍💻devops' }} && contains(fromJson('["status:⌛in-analysis", "status:🆘new-issue"]'), github.event.label.name)
+    #if: ${{ github.event.label.name == 'group:👨‍💻devops' || }}
+
+    steps:
+      # More info: https://github.com/step-security/harden-runner.
+      - name: Harden Runner
+        id: harden_runner
+        uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5
+        with:
+          egress-policy: audit
+
+      # More info: https://github.com/peter-murray/workflow-application-token-action.
+      - name: Get token
+        id: get_token
+        uses: peter-murray/workflow-application-token-action@8e1ba3bf1619726336414f1014e37f17fbadf1db
+        with:
+          application_id: ${{ secrets.ID_ADD_DEVOPS_PROJECT_BOT }}
+          application_private_key: ${{ secrets.PEM_ADD_DEVOPS_PROJECT_BOT }}
+
+      # More info: https://github.com/actions/checkout.
+      - name: Checkout & Authentication
+        uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      # More info: https://github.com/leonsteinhaeuser/project-beta-automations/
+      - name: Move issue to 🆕 New
+        uses: leonsteinhaeuser/project-beta-automations@7f947733020ee03daa363d16ea1223717b132f11
+        with:
+          gh_token: ${{ steps.get_token.outputs.token }}
+          organization: wr-projects
+          project_id: 14
+          resource_node_id: ${{ github.event.issue.node_id }}
+          status_value: 🆕 New

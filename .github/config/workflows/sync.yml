@@ -1,0 +1,61 @@
+group:
+  - repos: |
+      wr-projects/github-jstemplate
+      wr-projects/monorepojs-scaffolding
+      wr-projects/ospo
+
+    files:
+      - source: .github/.husky/
+        dest: .github/.husky/
+      - source: .github/ISSUE_TEMPLATE/
+        dest: .github/ISSUE_TEMPLATE/
+      - source: .github/config/linters/
+        dest: .github/config/linters/
+      - source: .github/config/workflows/create-labels.yml
+        dest: .github/config/workflows/create-labels.yml
+      - source: .github/config/workflows/emoji_mapping.json
+        dest: .github/config/workflows/emoji_mapping.json
+      - source: .github/wiki/
+        dest: .github/wiki/
+      - source: .github/workflows/auto-approve.yml
+        dest: .github/workflows/auto-approve.yml
+      - source: .github/workflows/autoupdate.yml
+        dest: .github/workflows/autoupdate.yml
+      - source: .github/workflows/create-labels.yml
+        dest: .github/workflows/create-labels.yml
+      - source: .github/workflows/fosstars-report.yml
+        dest: .github/workflows/fosstars-report.yml
+      - source: .github/workflows/gh-pages.yml
+        dest: .github/workflows/gh-pages.yml
+      - source: .github/workflows/pullrequest-linter.yml
+        dest: .github/workflows/pullrequest-linter.yml
+      - source: .github/workflows/pullrequest.yml
+        dest: .github/workflows/pullrequest.yml
+      - source: .github/workflows/push.yml
+        dest: .github/workflows/push.yml
+      - source: .github/workflows/rebase-issue.yml
+        dest: .github/workflows/rebase-issue.yml
+      - source: .github/workflows/stale.yml
+        dest: .github/workflows/stale.yml
+      - source: .github/workflows/wiki.yml
+        dest: .github/workflows/wiki.yml
+      - source: .github/PULL_REQUEST_TEMPLATE.md
+        dest: .github/PULL_REQUEST_TEMPLATE.md
+      - source: .github/dependabot.yml
+        dest: .github/dependabot.yml
+      - source: LICENSES/
+        replace: false
+      - source: .all-contributorsrc
+        replace: false
+      - source: .editorconfig
+        dest: .editorconfig
+      - source: .gitconfig
+        dest: .gitconfig
+      - source: .gitignore
+        replace: false
+      - source: LICENSE
+        replace: false
+      - source: OSSMETADATA
+        dest: OSSMETADATA
+      - source: README.md
+        replace: false
