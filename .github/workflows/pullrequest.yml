@@ -64,6 +64,41 @@ jobs:
         with:
           config-file: './.github/config/workflows/dependency-review.yml'
 
+  # More info: https://github.com/AlbertHernandez/working-label-action
+  working_label:
+    runs-on: ubuntu-latest
+    steps:
+       # More info: https://github.com/step-security/harden-runner.
+      - name: Harden Runner
+        id: harden_runner
+        uses: step-security/harden-runner@ebacdc22ef6c2cfb85ee5ded8f2e640f4c776dd5
+        with:
+          egress-policy: audit
+
+      # More info: https://github.com/peter-murray/workflow-application-token-action.
+      - name: Get token
+        id: get_token
+        uses: peter-murray/workflow-application-token-action@8e1ba3bf1619726336414f1014e37f17fbadf1db
+        with:
+          application_id: ${{ secrets.ID_WORKLABELBOT }}
+          application_private_key: ${{ secrets.ID_WORKLABELBOT }}
+
+      # More info: https://github.com/actions/checkout.
+      - name: Checkout & Authentication
+        uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b
+        with:
+          token: ${{ steps.get_token.outputs.token }}
+          persist-credentials: false
+          fetch-depth: 0
+
+      # More info: https://github.com/AlbertHernandez/working-label-action
+      - name: Working Label
+        uses: AlbertHernandez/working-label-action@398809d95be33f8f631c0f02e1d0e8cd8fbf8e73
+        with:
+          work_in_progress_label: 'type:🚧chore'
+          ready_to_review_label: 'status:⌛awaiting-review'
+    env:
+      GITHUB_TOKEN: ${{ steps.get_token.outputs.token }}
 
   # More info: https://github.com/pineapplelol/emojify-pr-title
   emojify-pr-title:
@@ -101,7 +136,6 @@ jobs:
           use-emoji-map: true
           emoji-map: 'https://raw.githubusercontent.com/wr-projects/github-template/main/.github/config/workflows/emoji_mapping.json'
           require-space: true
-          token: ${{ steps.get_token.outputs.token }}
 
   # More info: https://github.com/hiwelo/new-dependencies-action
   check_new_dependencies:
@@ -134,5 +168,3 @@ jobs:
 
       - name: Check for new dependencies
         uses: hiwelo/new-dependencies-action@e4175e14484328f9ab56df91e420e90ad5031c08
-        with:
-          token: ${{ steps.get_token.outputs.token }}
