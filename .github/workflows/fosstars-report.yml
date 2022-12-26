@@ -55,4 +55,4 @@ jobs:
           report-branch: fosstars-report
           report-file: .github/wiki/fosstars_security_rating.md
           badge-file: .github/assets/fosstars_security_rating.svg
-          token: ${{ steps.get_token.outputs.token }}
+          #token: ${{ steps.get_token.outputs.token }}
