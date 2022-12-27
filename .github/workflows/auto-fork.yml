@@ -12,9 +12,9 @@ env:
   ROOT_DIR: "./request/fork"
   SCRIPTS_DIR: ".github/workflows/scripts/fork"
   GITHUB_ACTOR: ${{ github.actor }}
-  GITHUB_PR: ${{ github.evnt.number }}
+  GITHUB_PR: ${{ github.event.number }}
   GITHUB_ORG: "wr-projects"
-  LICENSE_STRING: ""
+  LICENSE_STRING: "0bsd\napache-2.0\nbsd-2-clause\nbsd-3-clause\nmit"
 
 jobs:
   auto-fork:
@@ -44,6 +44,9 @@ jobs:
         with:
           file_or_dir: 'requests/fork/**'
           config_file: '.github/config/linters/.yamllint.yml'
+
+      - name: Privilege
+        run: chmod u+x ${SCRIPTS_DIR}/parse.sh
 
       - name: Parse request
         run: ${SCRIPTS_DIR}/parse.sh
