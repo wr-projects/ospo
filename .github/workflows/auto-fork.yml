@@ -9,7 +9,7 @@ on:
       - 'requests/fork/*.yaml'
 
 env:
-  ROOT_DIR: "./request/fork"
+  ROOT_DIR: "./requests/fork"
   SCRIPTS_DIR: ".github/workflows/scripts/fork"
   GITHUB_ACTOR: ${{ github.actor }}
   GITHUB_PR: ${{ github.event.number }}
