@@ -35,7 +35,12 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           token: ${{ steps.get_token.outputs.token }}
-          persist-credentials: false
+
+      - name: 🍠 lint yaml
+        uses: ibiqlik/action-yamllint@v3
+        with:
+          file_or_dir: 'requests/fork/**'
+          config_file: '.yamllint.yml'
 
       - name: Parse request
         run: ${SCRIPTS_DIR}/parse.sh
