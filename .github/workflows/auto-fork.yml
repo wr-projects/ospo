@@ -45,7 +45,7 @@ jobs:
           config_file: '.github/config/linters/.yamllint.yml'
 
       - name: Privilege
-        run: chmod u+x ${SCRIPTS_DIR}/parse.sh
+        run: chmod u+x ${SCRIPTS_DIR}/parse.sh && chmod u+x ${SCRIPTS_DIR}/move.sh && chmod u+x ${SCRIPTS_DIR}/push.sh
 
       - name: Parse request
         run: ${SCRIPTS_DIR}/parse.sh
