@@ -49,6 +49,7 @@ jobs:
         uses: Andrew-Chen-Wang/github-wiki-action@194d37ff03f5220e1baf7eb9d7c7ad7f3e1db30c
         env:
           WIKI_DIR: wiki/
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_MAIL: ${{ secrets.WIKI_CI_EMAIL }}
           GH_NAME: ${{ secrets.WIKI_CI_NAME }}
 
