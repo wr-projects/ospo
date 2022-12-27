@@ -40,7 +40,7 @@ jobs:
         uses: ibiqlik/action-yamllint@v3
         with:
           file_or_dir: 'requests/fork/**'
-          config_file: '.yamllint.yml'
+          config_file: '.github/config/linters/.yamllint.yml'
 
       - name: Parse request
         run: ${SCRIPTS_DIR}/parse.sh
