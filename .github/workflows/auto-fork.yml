@@ -9,12 +9,12 @@ on:
       - 'requests/fork/*.yaml'
 
 env:
-  ROOT_DIR: "./request/fork"
+  ROOT_DIR: "./requests/fork"
   SCRIPTS_DIR: ".github/workflows/scripts/fork"
   GITHUB_ACTOR: ${{ github.actor }}
-  GITHUB_PR: ${{ github.evnt.number }}
+  GITHUB_PR: ${{ github.event.number }}
   GITHUB_ORG: "wr-projects"
-  LICENSE_STRING: ""
+  LICENSE_STRING: "0bsd\napache-2.0\nbsd-2-clause\nbsd-3-clause\nmit"
 
 jobs:
   auto-fork:
