@@ -1,3 +1,7 @@
+/*
+  SPDX-FileCopyrightText: 2022 WebReady Projects <https://github.com/wr-projects/>
+  SPDX-License-Identifier: MIT
+*/
 module.exports = {
   globals: {
     page: true,
