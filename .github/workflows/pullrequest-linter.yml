@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2022 WebReady Projects <https://github.com/wr-projects/>
+#
+# SPDX-License-Identifier: MIT
 name: Pipeline - Lint Pull Request
 
 on:
@@ -54,7 +57,6 @@ jobs:
             security
             secrets
             design
-            style
             animations
             transitions
             improve
