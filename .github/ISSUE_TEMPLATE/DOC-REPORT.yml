@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2022 WebReady Projects <https://github.com/wr-projects/>
+#
+# SPDX-License-Identifier: MIT
 name: "🐛 Docs bug report"
 description: Create a new ticket to report an incident impacting the documentation.
 title: "🐛 [BUG] [DOCS] - <title>"

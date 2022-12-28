@@ -1,4 +1,7 @@
-name: "💡 Documentation Request"
+
+# SPDX-FileCopyrightText: 2022 WebReady Projects <https://github.com/wr-projects/>
+#
+# SPDX-License-Identifier: MITname: "💡 Documentation Request"
 description: Create a ticket for a feature request/additional documentation.
 title: "💡 [REQUEST] [DOCS] - <title>"
 labels: [
