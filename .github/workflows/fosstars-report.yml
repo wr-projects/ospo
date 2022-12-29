@@ -11,6 +11,11 @@ on:
   schedule:
     - cron: '0 0 * * *'
 
+permissions:
+  checks: read
+  contents: read
+  pull-requests: write
+
 jobs:
 
   create_fosstars_report:
