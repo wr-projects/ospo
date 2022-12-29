@@ -16,11 +16,11 @@ updates:
     time: "00:00"
 
   labels:
-    - "source: 💚 github_actions"
-    - "source: 🤖 bot"
+    - "source:💚github_actions"
+    - "source:🤖bot"
 
   commit-message:
-    prefix: "upgrade(ci)"
+    prefix: "⬆️upgrade(ci)"
 
   reviewers:
     - "wr-projects/devops"
