@@ -8,6 +8,10 @@ on:
   pull_request:
     types: [ opened, reopened ]
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
 
   # More info: https://github.com/GitGuardian/ggshield-action
