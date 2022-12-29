@@ -5,6 +5,11 @@
 name: Pipeline - Push
 on: push
 
+permissions:
+  actions: write
+  contents: read
+  pull-requests: read
+
 jobs:
 
   gitguardian:
