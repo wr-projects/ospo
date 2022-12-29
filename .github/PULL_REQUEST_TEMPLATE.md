@@ -23,35 +23,37 @@ Please describe any relevant performance impact of this change. This can be posi
 
 Please describe the tests that you ran to verify your changes. Provide instructions so others can reproduce. Please also list any relevant details for your test configuration.
 
-  - [ ] Test A
-  - [ ] Test B
+*   Test A
+*   Test B
 
 **Hardware Configuration**:
-  - [ ] Dev Board
-  - [ ] Test rack
-  - [ ] DVT Boards
-  - [ ] Production Boards
+
+*   Dev Board
+*   Test rack
+*   DVT Boards
+*   Production Boards
 
 **Software Configuration**:
-  * Operating System:
-  * Software version:
-  * Branch:
-  * Toolchain version:
-  * SDK version:
+
+*   Operating System:
+*   Software version:
+*   Branch:
+*   Toolchain version:
+*   SDK version:
 
 ## Reviews
 
 Please identify two developers to review this change
 
-  - [ ] @personA
-  - [ ] @personB
+*   @personA
+*   @personB
 
 ## Checklist:
 
-  - [ ] I have performed a self-review of my own code
-  - [ ] I have commented my code, particularly in hard-to-understand areas
-  - [ ] I have made corresponding changes to the documentation
-  - [ ] My changes generate no new warnings
-  - [ ] I have added tests that prove my fix is effective or that my feature works
-  - [ ] New and existing unit tests pass locally with my changes
-  - [ ] Any dependent changes have been merged and published in downstream modules
+*   I have performed a self-review of my own code
+*   I have commented my code, particularly in hard-to-understand areas
+*   I have made corresponding changes to the documentation
+*   My changes generate no new warnings
+*   I have added tests that prove my fix is effective or that my feature works
+*   New and existing unit tests pass locally with my changes
+*   Any dependent changes have been merged and published in downstream modules
