@@ -18,6 +18,11 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+
 
 jobs:
   wiki:
