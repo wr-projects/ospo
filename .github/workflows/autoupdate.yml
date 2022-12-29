@@ -5,6 +5,11 @@
 name: Pipeline - Autoupdate
 on: push
 
+permissions:
+  contents: read
+  checks: read
+  pull-requests: write
+
 jobs:
 
   # More info: https://github.com/tibdex/auto-update.
