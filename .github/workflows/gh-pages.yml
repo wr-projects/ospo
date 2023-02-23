@@ -31,7 +31,7 @@ jobs:
       # More info: https://github.com/step-security/harden-runner.
       - name: Harden Runner
         id: harden_runner
-        uses: step-security/harden-runner@18bf8ad2ca49c14cbb28b91346d626ccfb00c518
+        uses: step-security/harden-runner@c8454efe5d0bdefd25384362fe217428ca277d57
         with:
           egress-policy: audit
 
@@ -47,7 +47,7 @@ jobs:
         run: corepack enable
 
       - name: Use Node.js v16
-        uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516
+        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c
         with:
           node-version: 16.10.0
           cache: pnpm
@@ -66,7 +66,7 @@ jobs:
       # More info: https://github.com/step-security/harden-runner.
       - name: Harden Runner
         id: harden_runner
-        uses: step-security/harden-runner@18bf8ad2ca49c14cbb28b91346d626ccfb00c518
+        uses: step-security/harden-runner@c8454efe5d0bdefd25384362fe217428ca277d57
         with:
           egress-policy: audit
 
