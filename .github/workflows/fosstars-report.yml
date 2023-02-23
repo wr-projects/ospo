@@ -27,7 +27,7 @@ jobs:
       # More info: https://github.com/step-security/harden-runner.
       - name: Harden Runner
         id: harden_runner
-        uses: step-security/harden-runner@18bf8ad2ca49c14cbb28b91346d626ccfb00c518
+        uses: step-security/harden-runner@c8454efe5d0bdefd25384362fe217428ca277d57
         with:
           disable-sudo: true
           egress-policy: block
@@ -57,7 +57,7 @@ jobs:
 
       # More info: https://github.com/SAP/fosstars-rating-core-action.
       - name: Security Report
-        uses: SAP/fosstars-rating-core-action@e4c517e63155e2a6f1bff5b664cb8d027f92106e
+        uses: SAP/fosstars-rating-core-action@9936afebda30cbfbd064af5f5ee8405a23c17e2e
         with:
           rating: security
           report-branch: fosstars-report
