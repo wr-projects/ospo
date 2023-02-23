@@ -24,7 +24,7 @@ jobs:
       # More info: https://github.com/step-security/harden-runner.
       - name: Harden Runner
         id: harden_runner
-        uses: step-security/harden-runner@18bf8ad2ca49c14cbb28b91346d626ccfb00c518
+        uses: step-security/harden-runner@c8454efe5d0bdefd25384362fe217428ca277d57
         with:
           egress-policy: audit
 
@@ -45,7 +45,7 @@ jobs:
           fetch-depth: 0
 
       - name: Validate Pull Request title
-        uses: amannn/action-semantic-pull-request@01d5fd8a8ebb9aafe902c40c53f0f4744f7381eb
+        uses: amannn/action-semantic-pull-request@b6bca70dcd3e56e896605356ce09b76f7e1e0d39
         with:
           types: |
             init
