@@ -1,0 +1,7 @@
+# SPDX-FileCopyrightText: 2022 WebReady Projects <https://github.com/wr-projects/>
+#
+# SPDX-License-Identifier: MIT
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+exec < /dev/tty && git cz --hook || true
