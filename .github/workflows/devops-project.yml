@@ -46,7 +46,7 @@ jobs:
 
       # More info: https://github.com/leonsteinhaeuser/project-beta-automations/
       - name: Move issue to 🆕 New
-        uses: leonsteinhaeuser/project-beta-automations@7f947733020ee03daa363d16ea1223717b132f11
+        uses: leonsteinhaeuser/project-beta-automations@d1c1261558118c0876fdb2b57a649303925e5a70
         with:
           gh_token: ${{ steps.get_token.outputs.token }}
           organization: wr-projects
