@@ -57,7 +57,7 @@ jobs:
 
       # More info: https://github.com/SAP/fosstars-rating-core-action.
       - name: Security Report
-        uses: SAP/fosstars-rating-core-action@9936afebda30cbfbd064af5f5ee8405a23c17e2e
+        uses: SAP/fosstars-rating-core-action@cfe42b09ee59e9f28c640381d8e6f1e9fe6fd062
         with:
           rating: security
           report-branch: fosstars-report
