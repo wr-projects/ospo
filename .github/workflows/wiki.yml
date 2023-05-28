@@ -55,7 +55,7 @@ jobs:
 
       # More info: https://github.com/Andrew-Chen-Wang/github-wiki-action
       - name: Push Wiki
-        uses: Andrew-Chen-Wang/github-wiki-action@ea8349ad10760dd18dddd3c04af80f12e2dbca76
+        uses: Andrew-Chen-Wang/github-wiki-action@9895b2d4f08caf4db609e9583d5298c666d046f3
         env:
           WIKI_DIR: wiki/
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
