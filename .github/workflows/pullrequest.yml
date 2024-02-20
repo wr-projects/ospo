@@ -67,7 +67,7 @@ jobs:
 
       # More info: https://github.com/actions/dependency-review-action
       - name: Dependency Review
-        uses: actions/dependency-review-action@be8bc500ee15e96754d2a6f2d34be14e945a46f3
+        uses: actions/dependency-review-action@9129d7d40b8c12c1ed0f60400d00c92d437adcce
         with:
           config-file: './.github/config/workflows/dependency-review.yml'
 
