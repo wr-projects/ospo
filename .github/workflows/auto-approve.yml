@@ -35,7 +35,7 @@ jobs:
 
       # More info: https://github.com/actions/checkout.
       - name: Checkout & Authentication
-        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
+        uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f
         with:
           persist-credentials: false
           fetch-depth: 0
