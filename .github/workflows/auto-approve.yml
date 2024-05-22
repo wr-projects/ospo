@@ -21,7 +21,7 @@ jobs:
       # More info: https://github.com/step-security/harden-runner.
       - name: Harden Runner
         id: harden_runner
-        uses: step-security/harden-runner@c8454efe5d0bdefd25384362fe217428ca277d57
+        uses: step-security/harden-runner@f086349bfa2bd1361f7909c78558e816508cdc10
         with:
           egress-policy: audit
 
