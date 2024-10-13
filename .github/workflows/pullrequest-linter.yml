@@ -31,7 +31,7 @@ jobs:
       # More info: https://github.com/peter-murray/workflow-application-token-action.
       - name: Get token
         id: get_token
-        uses: peter-murray/workflow-application-token-action@dc0413987a085fa17d19df9e47d4677cf81ffef3
+        uses: peter-murray/workflow-application-token-action@baa1ef2638c3d9e5967b7c8b86219f8fc919e1bb
         with:
           application_id: ${{ secrets.ID_PRLINTERBOT }}
           application_private_key: ${{ secrets.PEM_PRLINTERBOT }}
