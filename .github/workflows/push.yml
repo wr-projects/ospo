@@ -64,16 +64,16 @@ jobs:
 
       - name: Downloading Syft
         id: syft
-        uses: anchore/sbom-action/download-syft@df80a981bc6edbc4e220a492d3cbe9f5547a6e75
+        uses: anchore/sbom-action/download-syft@da167eac915b4e86f08b264dbdbc867b61be6f0c
 
       - name: Generate SBOM file
-        uses: anchore/sbom-action@df80a981bc6edbc4e220a492d3cbe9f5547a6e75
+        uses: anchore/sbom-action@da167eac915b4e86f08b264dbdbc867b61be6f0c
         with:
           artifact-name: sbom.spdx
           format: spdx
           dependency-snapshot: true
 
       - name: Publish SBOM File
-        uses: anchore/sbom-action/publish-sbom@df80a981bc6edbc4e220a492d3cbe9f5547a6e75
+        uses: anchore/sbom-action/publish-sbom@da167eac915b4e86f08b264dbdbc867b61be6f0c
         with:
           sbom-artifact-match: ".*\\.spdx$"
