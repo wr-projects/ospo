@@ -29,7 +29,7 @@ jobs:
       # More info: https://github.com/peter-murray/workflow-application-token-action.
       - name: Get token
         id: get_token
-        uses: peter-murray/workflow-application-token-action@8e4e6fbf6fcc8a272781d97597969d21b3812974
+        uses: peter-murray/workflow-application-token-action@d17e3a9a36850ea89f35db16c1067dd2b68ee343
         with:
           application_id: ${{ secrets.ID_STALEBOT }}
           application_private_key: ${{ secrets.PEM_STALEBOT }}
@@ -43,7 +43,7 @@ jobs:
           fetch-depth: 0
 
       - name: Observer INC & PRs
-        uses: actions/stale@28ca1036281a5e5922ead5184a1bbf96e5fc984e
+        uses: actions/stale@b5d41d4e1d5dceea10e7104786b73624c18a190f
         with:
           #repo-token: ${{ steps.get_token.outputs.token }}
           days-before-stale: 30
