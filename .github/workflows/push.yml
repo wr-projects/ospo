@@ -37,7 +37,7 @@ jobs:
 
       # More info: https://github.com/GitGuardian/ggshield-action
       - name: GitGuardian Scanner
-        uses: GitGuardian/gg-shield-action@16a0afce4785690fa602b6dbabf60ed22a4a854b
+        uses: GitGuardian/gg-shield-action@da20be06cafe5e8633dc24744efe1efe8d30f06b
         with:
           args: -v --all-policies
         env:
